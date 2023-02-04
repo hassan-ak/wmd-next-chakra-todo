@@ -162,6 +162,17 @@ export default function TodoList() {
                       justify='space-between'
                     >
                       <HStack spacing={['2', '5']}>
+                        <Checkbox
+                          isChecked={todo.isDone}
+                          colorScheme='yellow'
+                          onChange={() => {
+                            updateTodo({
+                              id: todo.id,
+                              title: todo.title,
+                              isDone: !todo.isDone,
+                            });
+                          }}
+                        />
                         <Text fontSize={['xs', 'md']}>{todo.title}</Text>
                       </HStack>
                     </HStack>
