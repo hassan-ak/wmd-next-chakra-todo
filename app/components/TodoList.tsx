@@ -83,11 +83,14 @@ export default function TodoList() {
   };
 
   /************************************************/
+  // Display components
   {
     // App when no todos in the list
     if (todos.length === 0) {
       return (
         <Box>
+          {/************************************************/}
+          {/* Add new todo form */}
           <Box color='white' m='auto' maxW='900px' p={'5'}>
             <FormControl>
               <Stack spacing={3} direction={['column', 'column', 'row']}>
@@ -111,13 +114,20 @@ export default function TodoList() {
               </Stack>
             </FormControl>
           </Box>
+          {/************************************************/}
+          {/* Empty List */}
           <EmptyList />;
         </Box>
       );
     } else {
+      {
+        /************************************************/
+      }
       // When Todos in the List
       return (
         <Box>
+          {/************************************************/}
+          {/* Add new todo form */}
           <Box color='white' m='auto' maxW='900px' p={'5'}>
             <FormControl>
               <Stack spacing={3} direction={['column', 'column', 'row']}>
@@ -141,6 +151,8 @@ export default function TodoList() {
               </Stack>
             </FormControl>
           </Box>
+          {/************************************************/}
+          {/* Todos List Box */}
           <Box px='20px'>
             <Box
               as='div'
@@ -155,6 +167,8 @@ export default function TodoList() {
               <Stack spacing='2'>
                 {todos.map((todo: Todo) => {
                   return (
+                    /************************************************/
+                    // Todos List mapp over total todos
                     <HStack
                       bg='#48BB78'
                       key={todo.id}
@@ -164,6 +178,8 @@ export default function TodoList() {
                       borderRadius='md'
                       justify='space-between'
                     >
+                      {/************************************************/}
+                      {/* Todo and check box */}
                       <HStack spacing={['2', '5']}>
                         <Checkbox
                           isChecked={todo.isDone}
@@ -178,7 +194,11 @@ export default function TodoList() {
                         />
                         <Text fontSize={['xs', 'md']}>{todo.title}</Text>
                       </HStack>
+                      {/************************************************/}
+                      {/* Update or delete button based on status */}
                       {todo.isDone ? (
+                        /************************************************/
+                        // Delete button
                         <Button
                           fontSize='md'
                           colorScheme='red'
@@ -192,6 +212,9 @@ export default function TodoList() {
                           Delete
                         </Button>
                       ) : (
+                        /************************************************/
+                        // Update button
+                        // Chkara UI PopOver component
                         <Popover>
                           <PopoverTrigger>
                             <Button
@@ -204,6 +227,8 @@ export default function TodoList() {
                               Update
                             </Button>
                           </PopoverTrigger>
+                          {/************************************************/}
+                          {/* Popover component content */}
                           <Portal>
                             <PopoverContent
                               maxW={['150px', '300px']}
