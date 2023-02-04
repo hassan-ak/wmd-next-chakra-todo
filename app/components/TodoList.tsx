@@ -2,8 +2,9 @@
 // Addition Form
 // Todos List
 
-import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import EmptyList from './EmptyList';
+import React, { useState } from 'react';
 import { Todo } from '../interface/interface';
 import { Box, Button, FormControl, Input, Stack } from '@chakra-ui/react';
 
@@ -78,29 +79,39 @@ export default function TodoList() {
   };
 
   /************************************************/
-  return (
-    <Box color='white' m='auto' maxW='900px' p={'5'}>
-      <FormControl>
-        <Stack spacing={3} direction={['column', 'column', 'row']}>
-          <Input
-            placeholder='Enter New Todo'
-            size={['md', 'lg']}
-            type='text'
-            value={title}
-            onChange={handleInputChange}
-          />
-          <Button
-            colorScheme='teal'
-            variant='solid'
-            size={['md', 'lg']}
-            onClick={() => {
-              addTodo(title);
-            }}
-          >
-            Add Todo
-          </Button>
-        </Stack>
-      </FormControl>
-    </Box>
-  );
+  {
+    // App when no todos in the list
+    if (todos.length === 0) {
+      return (
+        <Box>
+          <Box color='white' m='auto' maxW='900px' p={'5'}>
+            <FormControl>
+              <Stack spacing={3} direction={['column', 'column', 'row']}>
+                <Input
+                  placeholder='Enter New Todo'
+                  size={['md', 'lg']}
+                  type='text'
+                  value={title}
+                  onChange={handleInputChange}
+                />
+                <Button
+                  colorScheme='teal'
+                  variant='solid'
+                  size={['md', 'lg']}
+                  onClick={() => {
+                    addTodo(title);
+                  }}
+                >
+                  Add Todo
+                </Button>
+              </Stack>
+            </FormControl>
+          </Box>
+          <EmptyList />;
+        </Box>
+      );
+    } else {
+      return <Box>Test</Box>;
+    }
+  }
 }
