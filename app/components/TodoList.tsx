@@ -175,6 +175,22 @@ export default function TodoList() {
                         />
                         <Text fontSize={['xs', 'md']}>{todo.title}</Text>
                       </HStack>
+                      {todo.isDone ? (
+                        <Button
+                          fontSize='md'
+                          colorScheme='red'
+                          size={['xs', 'md']}
+                          w={['16', '24']}
+                          flexShrink={0}
+                          onClick={() => {
+                            deleteTodo(todo.id);
+                          }}
+                        >
+                          Delete
+                        </Button>
+                      ) : (
+                        <Text>T1</Text>
+                      )}
                     </HStack>
                   );
                 })}
