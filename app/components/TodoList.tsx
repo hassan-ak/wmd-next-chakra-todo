@@ -7,6 +7,7 @@ import EmptyList from './EmptyList';
 import React, { useState } from 'react';
 import { Todo } from '../interface/interface';
 import { Box, Button, FormControl, Input, Stack } from '@chakra-ui/react';
+import { HStack, Text, Checkbox } from '@chakra-ui/react';
 
 export default function TodoList() {
   /************************************************/
@@ -111,6 +112,7 @@ export default function TodoList() {
         </Box>
       );
     } else {
+      // When Todos in the List
       return (
         <Box>
           <Box color='white' m='auto' maxW='900px' p={'5'}>
@@ -147,7 +149,25 @@ export default function TodoList() {
               borderRadius='10'
               minH={'200px'}
             >
-              {/* --- */}
+              <Stack spacing='2'>
+                {todos.map((todo: Todo) => {
+                  return (
+                    <HStack
+                      bg='#48BB78'
+                      key={todo.id}
+                      px='3'
+                      py='1'
+                      border={'1px'}
+                      borderRadius='md'
+                      justify='space-between'
+                    >
+                      <HStack spacing={['2', '5']}>
+                        <Text fontSize={['xs', 'md']}>{todo.title}</Text>
+                      </HStack>
+                    </HStack>
+                  );
+                })}
+              </Stack>
             </Box>
           </Box>
         </Box>
