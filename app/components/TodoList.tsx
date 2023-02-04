@@ -136,6 +136,20 @@ export default function TodoList() {
               </Stack>
             </FormControl>
           </Box>
+          <Box px='20px'>
+            <Box
+              as='div'
+              color='white'
+              bg='#27302C'
+              maxW='750px'
+              p={'5'}
+              m='auto'
+              borderRadius='10'
+              minH={'200px'}
+            >
+              {/* --- */}
+            </Box>
+          </Box>
         </Box>
       );
     }
