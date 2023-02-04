@@ -13,3 +13,21 @@
   ```cmd
   npm run dev
   ```
+
+2. Clean-Up working directory
+
+- Newly created next app comes with pre-defined data, we need to clean up the working directory for that delete follwoing files
+  ```cmd
+  ./app/global.css
+  ./app/page.modules.css
+  ```
+- Delete style imports from ./app/layout.tsx and delete un-necessary comments
+- Replace ./public/favicon.ico to update app logo and update ./app/head.tsx to edit app title and app descripton
+
+- Update ./app/page.tsx with following code
+
+  ```tsx
+  export default function Home() {
+    return <>Todo App</>;
+  }
+  ```
