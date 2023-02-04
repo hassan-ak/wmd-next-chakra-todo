@@ -22,6 +22,7 @@ export default function TodoList() {
     target: { value: React.SetStateAction<string> };
   }) => setUpTitle(e.target.value);
 
+  /************************************************/
   // Function to add todo in the list
   // gets title as an argument
   // add todo to already listed todos
@@ -36,6 +37,30 @@ export default function TodoList() {
       const newTodos: Todo[] = [...todos, newTodo];
       setTodos(newTodos);
       setTitle('');
+    }
+  };
+
+  /************************************************/
+  // Function to update todo in the list
+  // gets todo as an argument
+  // find todo in the list based on id
+  // update content of the todo
+  const updateTodo = (props: Todo) => {
+    if (props.title != '') {
+      let newTodos: Todo[] = [];
+      todos.map((todo) => {
+        let newTodo: Todo = { ...todo };
+        if (todo.id == props.id) {
+          newTodo = {
+            id: props.id,
+            title: props.title,
+            isDone: props.isDone,
+          };
+        }
+        newTodos.push(newTodo);
+      });
+      setTodos(newTodos);
+      setUpTitle('');
     }
   };
 
