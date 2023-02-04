@@ -111,7 +111,33 @@ export default function TodoList() {
         </Box>
       );
     } else {
-      return <Box>Test</Box>;
+      return (
+        <Box>
+          <Box color='white' m='auto' maxW='900px' p={'5'}>
+            <FormControl>
+              <Stack spacing={3} direction={['column', 'column', 'row']}>
+                <Input
+                  placeholder='Enter New Todo'
+                  size={['md', 'lg']}
+                  type='text'
+                  value={title}
+                  onChange={handleInputChange}
+                />
+                <Button
+                  colorScheme='teal'
+                  variant='solid'
+                  size={['md', 'lg']}
+                  onClick={() => {
+                    addTodo(title);
+                  }}
+                >
+                  Add Todo
+                </Button>
+              </Stack>
+            </FormControl>
+          </Box>
+        </Box>
+      );
     }
   }
 }
