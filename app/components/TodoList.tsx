@@ -14,4 +14,11 @@ export default function TodoList() {
   return <div>TodoList</div>;
 
   /************************************************/
+  // handle change in input cell
+  const handleInputChange = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => setTitle(e.target.value);
+  const handleUpdateChange = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => setUpTitle(e.target.value);
 }
