@@ -6,8 +6,11 @@ import { v4 as uuidv4 } from 'uuid';
 import EmptyList from './EmptyList';
 import React, { useState } from 'react';
 import { Todo } from '../interface/interface';
-import { Box, Button, FormControl, Input, Stack } from '@chakra-ui/react';
-import { HStack, Text, Checkbox } from '@chakra-ui/react';
+import { Input, FormControl } from '@chakra-ui/react';
+import { Box, Button, Popover, Portal, Stack } from '@chakra-ui/react';
+import { PopoverContent, PopoverBody, PopoverArrow } from '@chakra-ui/react';
+import { HStack, Text, Checkbox, PopoverCloseButton } from '@chakra-ui/react';
+import { PopoverTrigger, PopoverHeader, PopoverFooter } from '@chakra-ui/react';
 
 export default function TodoList() {
   /************************************************/
@@ -189,7 +192,57 @@ export default function TodoList() {
                           Delete
                         </Button>
                       ) : (
-                        <Text>T1</Text>
+                        <Popover>
+                          <PopoverTrigger>
+                            <Button
+                              fontSize='md'
+                              colorScheme='purple'
+                              size={['xs', 'md']}
+                              w={['16', '24']}
+                              flexShrink={0}
+                            >
+                              Update
+                            </Button>
+                          </PopoverTrigger>
+                          <Portal>
+                            <PopoverContent
+                              maxW={['150px', '300px']}
+                              color='white'
+                              bg='#1D2521'
+                            >
+                              <PopoverArrow />
+                              <PopoverHeader textAlign={'center'}>
+                                Update Todo
+                              </PopoverHeader>
+                              <PopoverCloseButton />
+                              <PopoverBody>
+                                <Input
+                                  placeholder={todo.title}
+                                  size={['md', 'lg']}
+                                  type='text'
+                                  value={upTitle}
+                                  onChange={handleUpdateChange}
+                                />
+                              </PopoverBody>
+                              <PopoverFooter textAlign='center'>
+                                <Button
+                                  colorScheme='teal'
+                                  variant='solid'
+                                  size={['sm']}
+                                  onClick={() => {
+                                    updateTodo({
+                                      id: todo.id,
+                                      title: upTitle,
+                                      isDone: todo.isDone,
+                                    });
+                                  }}
+                                >
+                                  Update
+                                </Button>
+                              </PopoverFooter>
+                            </PopoverContent>
+                          </Portal>
+                        </Popover>
                       )}
                     </HStack>
                   );
