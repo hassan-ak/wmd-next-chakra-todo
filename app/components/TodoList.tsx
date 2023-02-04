@@ -65,5 +65,17 @@ export default function TodoList() {
   };
 
   /************************************************/
+  // Function to delete todo from the list
+  // gets todo id as an argument
+  // find todo in the list based on id
+  // delete todo from the list
+  const deleteTodo = (props: string) => {
+    let newTodos: Todo[] = todos.filter((todo) => {
+      return todo.id !== props;
+    });
+    setTodos(newTodos);
+  };
+
+  /************************************************/
   return <div>TodoList</div>;
 }
